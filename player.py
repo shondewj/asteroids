@@ -4,10 +4,10 @@ from constants import *
 
 # Base class for game objects
 class Player(CircleShape):
-    def __init__(self, x, y, radius=PLAYER_RADIUS):
+    def __init__(self, x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2, radius=PLAYER_RADIUS):
         # we will be using this later
         if hasattr(self, "containers"):
-            super().__init__(self.containers)
+            super().__init__(x,y,radius)
         else:
             super().__init__(x,y,radius)
         self.rotation = 0
@@ -38,6 +38,6 @@ class Player(CircleShape):
         if (keys[pygame.K_a] or keys[pygame.K_LEFT]):
             self.rotate(-dt)
         if (keys[pygame.K_s] or keys[pygame.K_DOWN]):
-            self.rotate(-dt)
+            self.move(-dt)
         if (keys[pygame.K_d] or keys[pygame.K_RIGHT]):
             self.rotate(dt)
